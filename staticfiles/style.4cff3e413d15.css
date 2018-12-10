@@ -1,0 +1,14 @@
+body {
+    margin-top: 100px;
+}
+
+.box {
+    margin: 1rem -15px 0;
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem;
+    position: relative;
+    border: solid #f8f9fa;
+    box-sizing: border-box;
+}

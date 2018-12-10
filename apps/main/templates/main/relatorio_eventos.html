@@ -1,0 +1,89 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Monitor de Eventos</h1>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-6">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Evento</th>
+                    <th scope="col">Instancia</th>
+                    <th scope="col">#</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for evento in eventos_especificos %}
+                    <tr>
+                        <td>{{ evento.descricao }}</td>
+                        <td>Especifico</td>
+                        <td>{{ evento.instances.hostname }}</td>
+                        <td>
+                            <a class="btn btn-danger" href="{% url 'url_del_especifico' evento.pk %}">
+                                Excluir
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">Tabela vazia</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Evento</th>
+                    <th scope="col">Instancia</th>
+                    <th scope="col">#</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for evento in eventos_dinamicos %}
+                    <tr>
+                        <td>{{ evento.descricao }}</td>
+                        <td>Dinâmico</td>
+                        <td>{{ evento.instances.hostname }}</td>
+                        <td>
+                            <a class="btn btn-danger" href="{% url 'url_del_dinamico' evento.pk %}">
+                                Excluir
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">Tabela vazia</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endblock content %}

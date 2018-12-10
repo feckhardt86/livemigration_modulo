@@ -1,0 +1,73 @@
+[
+  {
+    "model": "main.tipoEvento",
+    "pk": 1,
+    "fields": {
+      "descricao": "Consumo de CPU"
+    }
+  },
+  {
+    "model": "main.tipoEvento",
+    "pk": 2,
+    "fields": {
+      "descricao": "Consumo de Memoria Ram"
+    }
+  },
+
+  {
+    "model": "main.computeNodes",
+    "pk": 1,
+    "fields": {
+      "hypervisor_hostname": "node1"
+    }
+  },
+  {
+    "model": "main.computeNodes",
+    "pk": 2,
+    "fields": {
+      "hypervisor_hostname": "node2"
+    }
+  },
+  {
+    "model": "main.computeNodes",
+    "pk": 3,
+    "fields": {
+      "hypervisor_hostname": "node3"
+    }
+  },
+
+  {
+    "model": "main.instances",
+    "pk": 1,
+    "fields": {
+      "hostname": "pc1",
+      "uuid": "1111111",
+      "vcups": "1",
+      "memory_mb": "64",
+      "compute_nodes": "1"
+    }
+  },
+  {
+    "model": "main.instances",
+    "pk": 2,
+    "fields": {
+      "hostname": "pc2",
+      "uuid": "2222222",
+      "vcups": "2",
+      "memory_mb": "128",
+      "compute_nodes": "2"
+    }
+  },
+  {
+    "model": "main.instances",
+    "pk": 3,
+    "fields": {
+      "hostname": "pc3",
+      "uuid": "222222",
+      "vcups": "1",
+      "memory_mb": "264",
+      "compute_nodes": "3"
+    }
+  }
+
+]

@@ -1,0 +1,64 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Live Migration Manualmente</h1>
+        </div>
+    </div>
+
+    <form action="{% url 'url_migracao_manual' %}" method="post" onsubmit="refreshPage()">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="box">
+                    <div class="form-group">
+                        <label for="instancia">Instância</label>
+                        <select class="form-control" id="instancia" name="instances">
+                            {% for i in instances %}
+                                <option value="{{ i.pk }}">{{ i.hostname }}</option>
+                            {% endfor %}
+                        </select>
+                        <small class="form-text text-muted">Selecione a instância</small>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="destino">Destino</label>
+                        <select class="form-control" id="destino" name="compute_nodes">
+                            {% for node in c_nodes %}
+                                <option value="{{ node.pk }}">{{ node.hypervisor_hostname }}</option>
+                            {% endfor %}
+                        </select>
+                        <small class="form-text text-muted">Migrar instância para</small>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" class="form-control"
+                               id="descricao" name="descricao">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <br>
+                <a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Migrar</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock content %}

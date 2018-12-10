@@ -1,0 +1,84 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Cadastro Automático Live Migration</h1>
+        </div>
+    </div>
+
+    <form action="{% url 'url_automatico_migration' %}" method="post" onsubmit="refreshPage()">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="box">
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" class="form-control"
+                               id="descricao" name="descricao">
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="alarme">Evento</label>
+                        <select class="form-control" id="alarme" name="cadastro_alarme">
+                            {% for a in alarmes %}
+                            <option value="{{ a.pk }}">{{ a.descricao }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="instances">Instância</label>
+                        <select class="form-control" id="instances" name="instances">
+                            {% for i in instances %}
+                            <option value="{{ i.pk }}">{{ i.hostname }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="historico">Parâmetro</label>
+                        <div class="input-group mb-3">
+                            <input type="text" maxlength="1" class="form-control"
+                                   id="historico" name="historico">
+                            <div class="input-group-append">
+                                <span class="input-group-text">Número de ocorrências</span>
+                            </div>
+                        </div>
+                        <small class="form-text text-muted">Utilizar Contexto Histórico</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <br>
+                <a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+
+    </form>
+
+
+
+
+
+
+
+
+</div>
+
+{% endblock content %}

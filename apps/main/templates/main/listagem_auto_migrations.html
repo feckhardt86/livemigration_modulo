@@ -1,0 +1,56 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Monitor de Eventos</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Evento</th>
+                    <th scope="col">Instância</th>
+                    <th scope="col">Parametro de Contexto</th>
+                    <th scope="col">#</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for c in cadastros %}
+                    <tr>
+                        <td>{{ c.descricao }}</td>
+                        <td>{{ c.cadastro_alarme.descricao }}</td>
+                        <td>{{ c.instances.hostname }}</td>
+                        <td>{{ c.historico }}</td>
+                        <td>
+                            <a class="btn btn-danger" href="{% url 'url_auto_migrations_del' c.pk %}">
+                                Excluir
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">Tabela vazia</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,78 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Evento Dinamico</h1>
+        </div>
+    </div>
+
+    <form action="{% url 'url_migracao_evento_dinamico' %}" method="post">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="box">
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" class="form-control"
+                               id="descricao" name="descricao">
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                        <label for="data">Data/Hora</label>
+                        <input type="text" class="form-control datepicker"
+                               id="data" name="data">
+                        <!--<small class="form-text text-muted">Informe a data e a hora</small>-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <br>
+                <a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
+
+{% endblock content %}
+
+{% block javascripts %}
+{{ block.super}}
+
+<script>
+    $(function() {
+        $('.datepicker').daterangepicker({
+            singleDatePicker: true,
+            timePicker: true,
+            timePickerIncrement: 60,
+            drops: 'up',
+            timePicker24Hour: true,
+            locale: {
+                format: 'DD/MM/YYYY hh:mm'
+            }
+        }, function(start, end, label) {
+
+        });
+    });
+</script>
+
+{% endblock javascripts %}

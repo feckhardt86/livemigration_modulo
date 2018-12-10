@@ -1,0 +1,56 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Monitor de Eventos</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Data Inicio</th>
+                    <th scope="col">Data Fim</th>
+                    <th scope="col">Evento</th>
+                    <th scope="col">Descrição</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for log in logs %}
+                    <tr>
+                        <th scope="row">
+                            <input type="checkbox" />
+                        </th>
+                        <td>{{ log.status }}</td>
+                        <td>{{ log.data_inicio| date:"d/m/y H:i"}}</td>
+                        <td>{{ log.data_fim | date:"d/m/y H:i"}}</td>
+                        <td>{{ log.descricao_evento }}</td>
+                        <td>{{ log.descricao }}</td>
+                    </tr>
+
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">Tabela vazia</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

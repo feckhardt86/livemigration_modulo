@@ -1,0 +1,4 @@
+DESCRICAO = $descricao
+INSTANCIA = $instancia
+UUID = $uuid
+DESTINO = $destino

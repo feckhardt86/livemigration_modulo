@@ -34,5 +34,4 @@ $ ./manage.py runserver
 
 ```sh
 $ ./manage.py loaddata initial_data
-```# livemigration_modulo
-# livemigration_modulo
+```

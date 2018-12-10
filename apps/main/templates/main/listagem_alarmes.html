@@ -1,0 +1,56 @@
+{% extends "app/base_site.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Monitor de Eventos</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Percentual</th>
+                    <th scope="col">Frequência</th>
+                    <th scope="col">#</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for alarme in alarmes %}
+                    <tr>
+                        <td>{{ alarme.descricao }}</td>
+                        <td>{{ alarme.tipo_evento.descricao }}</td>
+                        <td>{{ alarme.percentual }}</td>
+                        <td>{{ alarme.frequencia }}</td>
+                        <td>
+                            <a class="btn btn-danger" href="{% url 'url_alarmes_del' alarme.pk %}">
+                                Excluir
+                            </a>
+                        </td>
+                    </tr>
+
+                    {% empty %}
+                        <tr>
+                            <td colspan="6">Tabela vazia</td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

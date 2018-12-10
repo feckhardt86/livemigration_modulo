@@ -1,0 +1,4 @@
+DESCRICAO = $evento_descricao
+EVENTO = $tipo_evento | PERCENTUAL $evento_percentual % | FREQUENCIA $evento_frequencia
+INSTANCIA = $instancia
+UUID = $uuid
